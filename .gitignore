@@ -1,3 +1,7 @@
+# books
+*.pdf
+*.sw*
+
 # Compiled Object files
 *.slo
 *.lo
