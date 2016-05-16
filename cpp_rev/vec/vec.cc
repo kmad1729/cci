@@ -45,10 +45,8 @@ void Vec<T>::uncreate()
 {
     if(data) {
         iterator it = avail;
-        it--;
         while(it != data) {
-            alloc.destroy(it);
-            --it;
+            alloc.destroy(--it);
         }
         alloc.deallocate(data, limit - data);
     }

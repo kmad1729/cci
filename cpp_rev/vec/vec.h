@@ -37,6 +37,8 @@ class Vec {
         iterator end() {return avail;}
         const_iterator end() const {return avail;}
 
+        void clear() {uncreate();}
+
     private:
         iterator data;
         iterator avail;
