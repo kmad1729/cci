@@ -1,7 +1,16 @@
-# books
-*.pdf
-*.sw*
+*
+!*.cc
+!*.py
+!*.h
+!*/
+!*.txt
+!Makefile
 
+*.exe
+*.swp
+*.out
+*~
+revise
 # Compiled Object files
 *.slo
 *.lo
