@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <queue>
 
 template <class T>
 class B_Node {
@@ -33,12 +34,34 @@ class B_Tree {
             return n;
         }
 
-        void print_inOrder(B_Node<T>* n) {
+        void print_in_order_util(B_Node<T>* n) {
             if(n != NULL) {
-                print_inOrder((n -> left));
+                print_in_order_util((n -> left));
                 std::cout << (n -> data) << " ";
-                print_inOrder((n -> right));
+                print_in_order_util((n -> right));
             }
+        }
+
+        void print_level_order_util(B_Node<T>* n) {
+            //print level order traversal of the tree
+            std::cout << "(";
+            if(n != NULL) {
+                std::queue<B_Node<T>*> q;
+                q.push(n);
+                while(!q.empty()) {
+                    B_Node<T>* front = q.front();
+                    q.pop();
+
+                    std::cout << (front->data) << " ";
+                    if((front -> left) != NULL)
+                        q.push((front -> left));
+                    if((front -> right) != NULL)
+                        q.push((front -> right));
+
+                }
+
+            }
+            std::cout << ")";
         }
 
     public:
@@ -51,7 +74,14 @@ class B_Tree {
         }
 
         void print_in_order() {
-            print_inOrder(root);
+            std::cout << "(";
+            print_in_order_util(root);
+            std::cout << ")" << std::endl;
+        }
+
+
+        void print_level_order() {
+            print_level_order_util(root);
             std::cout << std::endl;
         }
 
