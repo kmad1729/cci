@@ -19,6 +19,14 @@ int main()
     bt.print_level_order();
     cout << "() <--expected" << endl;
     cout << delim;
+    cout << "checking for 42 in the tree" << endl;
+    cout << "42 in tree? " << bt.lookup(42) << endl;
+    cout << "expected    0" << endl;
+    cout << delim;
+    cout << "size of empty tree = " << bt.size() << endl;
+    cout << "expected             0" << endl;
+
+
 
     int ints_to_insert[] = {42, 17, 96, 5, 36, 78, 102, 84, -1, 10};
     int sz_ints_to_insert = sizeof(ints_to_insert) / sizeof(ints_to_insert[0]);
@@ -41,5 +49,17 @@ int main()
     cout << "printing the binary tree in level order -->" << endl;
     bt.print_level_order();
     cout << "(42 17 96 5 36 78 102 -1 10 84 ) is expected" << endl;
+
+    cout << delim;
+    cout << "doing lookup tests" << endl;
+    for(int i = 0; i < sz_ints_to_insert; i++) {
+        int curr_int = ints_to_insert[i];
+        cout << curr_int << " in tree? " << bt.lookup(curr_int) << endl;
+        cout <<             "expected  1" << endl;
+    }
+
+    cout << delim;
+    cout << "size of tree = " << bt.size() << endl;
+    cout << "expected       " << sz_ints_to_insert << endl;
 }
 

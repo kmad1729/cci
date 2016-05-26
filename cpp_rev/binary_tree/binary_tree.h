@@ -64,6 +64,25 @@ class B_Tree {
             std::cout << ")";
         }
 
+        bool lookup_util(B_Node<T>* n, const T& t) {
+            if(n != NULL) {
+                if((n -> data) == t)
+                    return true;
+                else if ((n -> data) < t)
+                    return lookup_util((n -> left), t);
+                else
+                    return lookup_util((n -> right), t);
+            }
+            return false;
+        }
+
+        int size_util(B_Node<T>* n) {
+            if(n != NULL)
+                return 1 + size_util((n -> left)) +
+                    size_util((n -> right));
+            return 0;
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -85,4 +104,12 @@ class B_Tree {
             std::cout << std::endl;
         }
 
+
+        bool lookup(const T& t) {
+            return lookup_util(root, t);
+        }
+
+        int size() {
+            return size_util(root);
+        }
 };
