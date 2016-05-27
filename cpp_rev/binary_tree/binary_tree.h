@@ -18,22 +18,10 @@ class B_Node {
 
 template <class T>
 class B_Tree {
-    private:
+    protected:
         B_Node<T>* root;
-        B_Node<T>* insert_util(B_Node<T>* n, const T& t) {
-            if(n == NULL) {
-                n = new B_Node<T>(t);
-            } else {
-                if(t <= (n -> data)) {
-                    (n -> left) = insert_util((n -> left), t);
-                } else {
-                    (n -> right) = insert_util((n -> right), t);
-                }
-            }
 
-            return n;
-        }
-
+    private:
         void print_in_order_util(B_Node<T>* n) {
             if(n != NULL) {
                 print_in_order_util((n -> left));
@@ -64,18 +52,6 @@ class B_Tree {
             std::cout << ")";
         }
 
-        bool lookup_util(B_Node<T>* n, const T& t) {
-            if(n != NULL) {
-                if((n -> data) == t)
-                    return true;
-                else if ((n -> data) < t)
-                    return lookup_util((n -> left), t);
-                else
-                    return lookup_util((n -> right), t);
-            }
-            return false;
-        }
-
         int size_util(B_Node<T>* n) {
             if(n != NULL)
                 return 1 + size_util((n -> left)) +
@@ -97,25 +73,15 @@ class B_Tree {
             root = NULL;
         }
 
-        void insert(const T& t) {
-            root = insert_util(root, t);
-        }
-
         void print_in_order() {
             std::cout << "(";
             print_in_order_util(root);
             std::cout << ")" << std::endl;
         }
 
-
         void print_level_order() {
             print_level_order_util(root);
             std::cout << std::endl;
-        }
-
-
-        bool lookup(const T& t) {
-            return lookup_util(root, t);
         }
 
         int size() {
@@ -124,5 +90,46 @@ class B_Tree {
 
         int max_depth() {
             return util_max_depth(root);
+        }
+};
+
+
+template <class T>
+class B_Search_Tree : public B_Tree<T> {
+    private:
+        B_Node<T>* insert_util(B_Node<T>* n, const T& t) {
+            if(n == NULL) {
+                n = new B_Node<T>(t);
+            } else {
+                if(t <= (n -> data)) {
+                    (n -> left) = insert_util((n -> left), t);
+                } else {
+                    (n -> right) = insert_util((n -> right), t);
+                }
+            }
+
+            return n;
+        }
+
+        bool lookup_util(B_Node<T>* n, const T& t) {
+            if(n != NULL) {
+                if((n -> data) == t)
+                    return true;
+                else if ((n -> data) < t)
+                    return lookup_util((n -> left), t);
+                else
+                    return lookup_util((n -> right), t);
+            }
+            return false;
+        }
+
+
+    public:
+        void insert(const T& t) {
+            B_Tree<T>::root = insert_util(B_Tree<T>::root, t);
+        }
+
+        bool lookup(const T& t) {
+            return lookup_util(B_Tree<T>::root, t);
         }
 };

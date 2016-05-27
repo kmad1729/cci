@@ -9,13 +9,13 @@ using namespace std;
 
 int main()
 {
-    B_Tree<int> bt;
+    B_Search_Tree<int> bt;
     string delim = string(20, '#') + '\n';
     
-    cout << "printing out empty binary tree" << endl;
+    cout << "printing out empty binary search tree" << endl;
     bt.print_in_order();
     cout << "() <--expected" << endl;
-    cout << "printing out empty binary tree in level order" << endl;
+    cout << "printing out empty binary search tree in level order" << endl;
     bt.print_level_order();
     cout << "() <--expected" << endl;
     cout << delim;
@@ -43,13 +43,13 @@ int main()
     cout << endl;
 
     cout << delim;
-    cout << "binary tree ---> " << endl;
+    cout << "binary search tree ---> " << endl;
     bt.print_in_order();
 
     cout << "(-1 5 10 17 36 42 42 78 84 96 102 ) is expected " << endl;
 
     cout << delim;
-    cout << "printing the binary tree in level order -->" << endl;
+    cout << "printing the binary search tree in level order -->" << endl;
     bt.print_level_order();
     cout << "(42 17 96 5 36 78 102 -1 10 42 84 ) is expected" << endl;
 
