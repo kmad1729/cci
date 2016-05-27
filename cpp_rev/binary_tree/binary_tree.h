@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <queue>
+#include <stdexcept>
 
 template <class T>
 class B_Node {
@@ -123,6 +124,18 @@ class B_Search_Tree : public B_Tree<T> {
             return false;
         }
 
+        T& util_min_value(B_Node<T>* n) {
+            //get the minimum value in a non empty binary search tree
+            //in case of empty throw a domain error
+            if(n == NULL)
+                throw std::domain_error("Cannot find minimum value of empty tree");
+
+            B_Node<T>* curr_node = n;
+            while( (curr_node->left) != NULL)
+                curr_node = (curr_node -> left);
+            return (curr_node -> data);
+        }
+
 
     public:
         void insert(const T& t) {
@@ -131,5 +144,9 @@ class B_Search_Tree : public B_Tree<T> {
 
         bool lookup(const T& t) {
             return lookup_util(B_Tree<T>::root, t);
+        }
+
+        T& min_value() {
+            return util_min_value(B_Tree<T>::root);
         }
 };

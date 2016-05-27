@@ -1,9 +1,9 @@
-#include<iostream>
 #include "binary_tree.h"
 #include <iostream>
 #include <string>
 #include <iterator>
 #include <algorithm>
+#include <stdexcept>
 
 using namespace std;
 
@@ -28,6 +28,14 @@ int main()
     cout << delim;
     cout << "max depth of empty tree = " << bt.max_depth() << endl;
     cout << "expected                  0" << endl;
+    cout << delim;
+    cout << "trying to find min value of empty bst -->" << endl;
+    try {
+        bt.min_value();
+    } catch (domain_error e) {
+        cerr << "caught domain_error --> " << e.what() << endl;
+    }
+
 
 
 
@@ -67,5 +75,8 @@ int main()
     cout << delim;
     cout << "max depth of tree = " << bt.max_depth() << endl;
     cout << "expected       " << 4 << endl;
+    cout << delim;
+    cout << "Min value of tree = " << bt.min_value() << endl;
+    cout << "expected           -1" << endl;
 }
 
