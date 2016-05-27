@@ -83,6 +83,15 @@ class B_Tree {
             return 0;
         }
 
+        int util_max_depth(B_Node<T>* n) {
+            //get the maximum distance between n and a farthest leaf
+            if(n != NULL) {
+                return 1 + std::max(util_max_depth(n-> left),
+                        util_max_depth(n->right));
+            }
+            return 0;
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -111,5 +120,9 @@ class B_Tree {
 
         int size() {
             return size_util(root);
+        }
+
+        int max_depth() {
+            return util_max_depth(root);
         }
 };

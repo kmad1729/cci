@@ -25,10 +25,13 @@ int main()
     cout << delim;
     cout << "size of empty tree = " << bt.size() << endl;
     cout << "expected             0" << endl;
+    cout << delim;
+    cout << "max depth of empty tree = " << bt.max_depth() << endl;
+    cout << "expected                  0" << endl;
 
 
 
-    int ints_to_insert[] = {42, 17, 96, 5, 36, 78, 102, 84, -1, 10};
+    int ints_to_insert[] = {42, 17, 96, 5, 36, 78, 102, 84, -1, 42, 10 };
     int sz_ints_to_insert = sizeof(ints_to_insert) / sizeof(ints_to_insert[0]);
     for(int i = 0; i < sz_ints_to_insert; i++) 
         bt.insert(ints_to_insert[i]);
@@ -43,12 +46,12 @@ int main()
     cout << "binary tree ---> " << endl;
     bt.print_in_order();
 
-    cout << "(-1 5 10 17 36 42 78 84 96 102 ) is expected " << endl;
+    cout << "(-1 5 10 17 36 42 42 78 84 96 102 ) is expected " << endl;
 
     cout << delim;
     cout << "printing the binary tree in level order -->" << endl;
     bt.print_level_order();
-    cout << "(42 17 96 5 36 78 102 -1 10 84 ) is expected" << endl;
+    cout << "(42 17 96 5 36 78 102 -1 10 42 84 ) is expected" << endl;
 
     cout << delim;
     cout << "doing lookup tests" << endl;
@@ -61,5 +64,8 @@ int main()
     cout << delim;
     cout << "size of tree = " << bt.size() << endl;
     cout << "expected       " << sz_ints_to_insert << endl;
+    cout << delim;
+    cout << "max depth of tree = " << bt.max_depth() << endl;
+    cout << "expected       " << 4 << endl;
 }
 
