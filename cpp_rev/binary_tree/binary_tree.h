@@ -77,6 +77,14 @@ class B_Tree {
             }
         }
 
+        bool util_has_path_sum(B_Node<T>* n, const T& sum) {
+            if(n == NULL)
+                return (sum == 0);
+            T required_sum = sum - (n -> data);
+            return util_has_path_sum((n -> left), required_sum)
+                || util_has_path_sum((n -> right), required_sum);
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -105,6 +113,10 @@ class B_Tree {
 
         int max_depth() {
             return util_max_depth(root);
+        }
+
+        bool has_path_sum(const T& sum) {
+            return util_has_path_sum(root, sum);
         }
 };
 

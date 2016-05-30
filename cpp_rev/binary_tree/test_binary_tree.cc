@@ -39,6 +39,17 @@ int main()
         cerr << "caught domain_error --> " << e.what() << endl;
     }
 
+    cout << delim;
+    int required_sum = 0;
+    cout << "checking if empty tree has path sum " << required_sum << endl;
+    cout << bt.has_path_sum(required_sum) << endl;
+    cout << "1 <-- expected" << endl;
+    required_sum = 42;
+    cout << "checking if empty tree has path sum " << required_sum << endl;
+    cout << bt.has_path_sum(required_sum) << endl;
+    cout << "0 <-- expected" << endl;
+    cout << delim;
+
 
 
 
@@ -86,5 +97,35 @@ int main()
     cout << "printing post order --> " << endl;
     bt.print_post_order();
     cout << "(-1 10 5 42 36 17 84 78 102 96 42 ) <-- expected" << endl;
+
+    cout << delim;
+    cout << "checking if tree has path sum " << required_sum << endl;
+    cout << bt.has_path_sum(required_sum) << endl;
+    cout << "0 <-- expected" << endl;
+
+    required_sum = 63;
+    cout << "checking if empty tree has path sum " << required_sum << endl;
+    cout << bt.has_path_sum(required_sum) << endl;
+    cout << "1 <-- expected" << endl;
+
+    required_sum = 74;
+    cout << "checking if empty tree has path sum " << required_sum << endl;
+    cout << bt.has_path_sum(required_sum) << endl;
+    cout << "1 <-- expected" << endl;
+
+    required_sum = 137;
+    cout << "checking if empty tree has path sum " << required_sum << endl;
+    cout << bt.has_path_sum(required_sum) << endl;
+    cout << "1 <-- expected" << endl;
+
+    required_sum = 300;
+    cout << "checking if empty tree has path sum " << required_sum << endl;
+    cout << bt.has_path_sum(required_sum) << endl;
+    cout << "1 <-- expected" << endl;
+
+    required_sum = 240;
+    cout << "checking if empty tree has path sum " << required_sum << endl;
+    cout << bt.has_path_sum(required_sum) << endl;
+    cout << "1 <-- expected" << endl;
 }
 
