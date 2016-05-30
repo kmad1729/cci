@@ -161,6 +161,14 @@ class B_Tree {
 
         }
 
+        void util_mirror(B_Node<T>* n) {
+            if(n != NULL) {
+                swap(n -> left, n -> right);
+                util_mirror(n -> left);
+                util_mirror(n -> right);
+            }
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -204,6 +212,10 @@ class B_Tree {
 
         void print_paths2() {
             kmad_util_print_paths(root);
+        }
+
+        void mirror() {
+            util_mirror(root);
         }
 };
 
