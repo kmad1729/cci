@@ -50,6 +50,11 @@ int main()
     cout << "0 <-- expected" << endl;
     cout << delim;
 
+    cout << "printing root-to-leaf paths to empty tree" << endl;
+    bt.print_paths();
+    cout << "() <-- expected" << endl;
+    cout << delim;
+
 
 
 
@@ -127,5 +132,9 @@ int main()
     cout << "checking if empty tree has path sum " << required_sum << endl;
     cout << bt.has_path_sum(required_sum) << endl;
     cout << "1 <-- expected" << endl;
+
+    cout << delim;
+    cout << "printing all root to leaf paths -->" << endl;
+    bt.print_paths();
 }
 

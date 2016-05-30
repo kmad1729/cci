@@ -2,6 +2,8 @@
 #include <iostream>
 #include <queue>
 #include <stdexcept>
+#include <algorithm>
+#include <iterator>
 
 template <class T>
 class B_Node {
@@ -14,6 +16,10 @@ class B_Node {
             data = T(t);
             left = NULL;
             right = NULL;
+        }
+
+        bool is_leaf() {
+            return left == NULL && right == NULL;
         }
 };
 
@@ -85,6 +91,26 @@ class B_Tree {
                 || util_has_path_sum((n -> right), required_sum);
         }
 
+        void util_print_paths(B_Node<T>* n, T arr[], int len) {
+            if(n == NULL) {
+                std::cout << "()" << std::endl;
+                return;
+            }
+            if(n -> is_leaf()) {
+                std::cout << "(";
+                std::copy(arr, arr + len, 
+                        std::ostream_iterator<T>(std::cout, " "));
+                std::cout << (n -> data);
+                std::cout << ")" << std::endl;
+                return;
+            }
+            arr[len] = (n -> data);
+            if((n -> left) != NULL) 
+                util_print_paths((n -> left), arr, len + 1);
+            if((n -> right) != NULL) 
+                util_print_paths((n -> right), arr, len + 1);
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -117,6 +143,13 @@ class B_Tree {
 
         bool has_path_sum(const T& sum) {
             return util_has_path_sum(root, sum);
+        }
+
+        void print_paths() {
+            int max_depth = B_Tree::max_depth();
+            T* arr = new T[max_depth];
+            util_print_paths(root, arr, 0);
+            delete[] arr;
         }
 };
 
