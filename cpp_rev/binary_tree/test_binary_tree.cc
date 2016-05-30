@@ -136,5 +136,9 @@ int main()
     cout << delim;
     cout << "printing all root to leaf paths -->" << endl;
     bt.print_paths();
+
+    cout << delim;
+    cout << "printing all root to leaf paths using method 2-->" << endl;
+    bt.print_paths2();
 }
 

@@ -4,6 +4,11 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iterator>
+#include <stack>
+#include <utility>
+#include <list>
+
+using namespace std;
 
 template <class T>
 class B_Node {
@@ -111,6 +116,51 @@ class B_Tree {
                 util_print_paths((n -> right), arr, len + 1);
         }
 
+        void kmad_util_print_paths(B_Node<T>* n) {
+            if(n == NULL) cout << "()" << endl;
+
+            //typedef B_Node<T>* b_node_ptr;
+            typedef list<B_Node<T>* > b_node_list;
+            typedef pair<B_Node<T>* , b_node_list > pp_pair;
+
+            b_node_list l;
+            stack<pp_pair> s;
+
+            l.push_back(n);
+            s.push(pp_pair(n, l));
+
+            while(!s.empty()) {
+                pp_pair top = s.top();
+                s.pop();
+
+                B_Node<T>*  curr_node = top.first;
+                b_node_list curr_list = top.second;
+
+                if(curr_node -> is_leaf()) {
+                    cout << "(";
+                    for(typename b_node_list::const_iterator i = curr_list.begin();
+                            i != curr_list.end(); i++) {
+                        cout << ((*i) -> data) << " ";
+                    }
+                    cout << ")" << endl;
+                    continue;
+                }
+
+                if((curr_node -> left) != NULL) {
+                    b_node_list left_list(curr_list);
+                    left_list.push_back((curr_node -> left));
+                    s.push(pp_pair((curr_node -> left), left_list));
+                }
+
+                if((curr_node -> right) != NULL) {
+                    b_node_list right_list(curr_list);
+                    right_list.push_back((curr_node -> right));
+                    s.push(pp_pair((curr_node -> right), right_list));
+                }
+            }
+
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -150,6 +200,10 @@ class B_Tree {
             T* arr = new T[max_depth];
             util_print_paths(root, arr, 0);
             delete[] arr;
+        }
+
+        void print_paths2() {
+            kmad_util_print_paths(root);
         }
 };
 
