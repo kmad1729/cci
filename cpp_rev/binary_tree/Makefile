@@ -1,7 +1,8 @@
 CC=c++
 CC_Flags= -Wall -g
 
-_ALL=test_binary_tree mirror_btree_test doubletree_btree_test
+_ALL=test_binary_tree mirror_btree_test doubletree_btree_test \
+	 sametree_btree_test
 
 all: $(_ALL)
 
@@ -12,6 +13,9 @@ mirror_btree_test: mirror_btree_test.cc
 	$(CC) -o $@ $(CC_Flags) $^
 
 doubletree_btree_test: doubletree_btree_test.cc
+	$(CC) -o $@ $(CC_Flags) $^
+
+sametree_btree_test: sametree_btree_test.cc
 	$(CC) -o $@ $(CC_Flags) $^
 
 clean:

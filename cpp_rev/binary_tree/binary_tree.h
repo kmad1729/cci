@@ -179,6 +179,15 @@ class B_Tree {
             }
         }
 
+        bool util_same_tree(B_Node<T>* a, B_Node<T>* b) {
+            if(a == NULL)
+                return (b == NULL);
+            if((a -> data) != (b -> data))
+                return false;
+            return util_same_tree(a -> left, b -> left)
+                && util_same_tree(a -> right, b -> right);
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -230,6 +239,10 @@ class B_Tree {
 
         void double_tree() {
             util_double_tree(root);
+        }
+
+        bool same_tree(const B_Tree<T>& right) {
+            return util_same_tree(root, right.root);
         }
 };
 
