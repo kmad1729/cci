@@ -69,6 +69,14 @@ class B_Tree {
             return 0;
         }
 
+        void util_print_post_order(B_Node<T>* n) {
+            if(n != NULL) {
+                util_print_post_order((n -> left));
+                util_print_post_order((n -> right));
+                std::cout << n -> data << " ";
+            }
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -77,6 +85,12 @@ class B_Tree {
         void print_in_order() {
             std::cout << "(";
             print_in_order_util(root);
+            std::cout << ")" << std::endl;
+        }
+
+        void print_post_order() {
+            std::cout << "(";
+            util_print_post_order(root);
             std::cout << ")" << std::endl;
         }
 

@@ -18,6 +18,9 @@ int main()
     cout << "printing out empty binary search tree in level order" << endl;
     bt.print_level_order();
     cout << "() <--expected" << endl;
+    cout << "printing out empty binary search tree in post order" << endl;
+    bt.print_post_order();
+    cout << "() <-- expected" << endl;
     cout << delim;
     cout << "checking for 42 in the tree" << endl;
     cout << "42 in tree? " << bt.lookup(42) << endl;
@@ -78,5 +81,10 @@ int main()
     cout << delim;
     cout << "Min value of tree = " << bt.min_value() << endl;
     cout << "expected           -1" << endl;
+
+    cout << delim;
+    cout << "printing post order --> " << endl;
+    bt.print_post_order();
+    cout << "(-1 10 5 42 36 17 84 78 102 96 42 ) <-- expected" << endl;
 }
 
