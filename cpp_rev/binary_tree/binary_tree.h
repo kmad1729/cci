@@ -169,6 +169,16 @@ class B_Tree {
             }
         }
 
+        void util_double_tree(B_Node<T>* n) {
+            if(n != NULL) {
+                B_Node<T>* new_node = new B_Node<T>(n -> data);
+                (new_node -> left) = (n -> left);
+                (n -> left) = new_node;
+                util_double_tree(new_node -> left);
+                util_double_tree(n -> right);
+            }
+        }
+
     public:
         B_Tree() {
             root = NULL;
@@ -216,6 +226,10 @@ class B_Tree {
 
         void mirror() {
             util_mirror(root);
+        }
+
+        void double_tree() {
+            util_double_tree(root);
         }
 };
 
