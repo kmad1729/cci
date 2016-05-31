@@ -302,3 +302,21 @@ class B_Search_Tree : public B_Tree<T> {
             return util_min_value(B_Tree<T>::root);
         }
 };
+
+
+int count_trees(int num_keys)
+{
+    //number of different bst structurue possible for elems 1, 2, 3,... num_keys
+    if(num_keys == 0) return 1;
+    if(num_keys == 1) return 1;
+    if(num_keys == 2) return 2;
+
+    int result = 0;
+    for(int i = 1; i <= num_keys; i++) {
+        int num_left = i - 1;
+        int num_right = num_keys - i;
+        
+        result += (count_trees(num_left) * (count_trees(num_right)) );
+    }
+    return result;
+}

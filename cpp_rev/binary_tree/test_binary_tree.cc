@@ -140,5 +140,18 @@ int main()
     cout << delim;
     cout << "printing all root to leaf paths using method 2-->" << endl;
     bt.print_paths2();
+
+
+    cout << delim;
+    cout << "testing count trees. Number of different bst structures for given "
+        " number of keys" << endl;;
+    int num_keys = 3;
+    cout << "Number of bst structure for " << num_keys << " = " << count_trees(num_keys) 
+        << endl;
+    cout << "expected                        5" << endl;
+    num_keys = 4;
+    cout << "Number of bst structure for " << num_keys << " = " << count_trees(num_keys) 
+        << endl;
+    cout << "expected                        14" << endl;
 }
 
