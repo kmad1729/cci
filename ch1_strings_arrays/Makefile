@@ -1,7 +1,7 @@
 CC=g++
 CC_Flags= -g -Wall -std=c++11
 
-_ALL= prb1_5 prb1_4 prb1_6 prb1_7
+_ALL= prb1_5 prb1_4 prb1_6 prb1_7 prb1_2
 
 all: $(_ALL)
 
@@ -15,6 +15,9 @@ prb1_4: prb1_4.cc
 	$(CC) -o $@ $(CC_Flags) $^
 
 prb1_7: prb1_7.cc
+	$(CC) -o $@ $(CC_Flags) $^
+
+prb1_2: prb1_2.cc
 	$(CC) -o $@ $(CC_Flags) $^
 
 clean:
