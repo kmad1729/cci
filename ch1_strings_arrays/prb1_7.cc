@@ -71,6 +71,13 @@ int main()
         {4, 3,-1, 6, 2}
     };
 
+    int v3[][COLS] = {
+        {1, 2, 1, 1, 1},
+        {6, 8, 3, 9, 5},
+        {1, 6, 1, 1, 3},
+        {4, 3,-1, 6, 2}
+    };
+
     string delim = string(20, '#') + '\n';
 
     cout << "v1 --> " << endl;
@@ -87,5 +94,13 @@ int main()
     cout << "after setting to M and N to 0 -->" << endl;
     set_row_col_0(v2);
     print_vec(v2);
+    cout << delim;
+
+    cout << "v3 --> " << endl;
+    print_vec(v3);
+
+    cout << "after setting to M and N to 0 -->" << endl;
+    set_row_col_0(v3);
+    print_vec(v3);
     cout << delim;
 }
