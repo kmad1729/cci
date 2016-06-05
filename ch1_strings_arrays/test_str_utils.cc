@@ -5,6 +5,14 @@
 
 using namespace std;
 
+void print_str(const char* s) {
+    if(s == NULL) 
+        cout << "NULL";
+    else
+        cout << s;
+
+}
+
 int main()
 {
     string delim  = string(20, '#') + '\n';
@@ -16,15 +24,33 @@ int main()
         "a", //small_str
         " ", //blank_str
         "\n", //new line string
+        "NULL"
     };
 
-    char* null_str = NULL;
+    int rotate_ind[] = {
+        0,
+        2,
+        4,
+        0,
+        0,
+        0,
+        1
+    };
+
+
 
     int test_strs_count = sizeof(test_strs) / sizeof(test_strs[0]);
+    char* rotated_str = NULL;
 
     for(int i = 0; i < test_strs_count; i++) {
-        cout << "test str [" << i << "] = (" << 
-            test_strs[i] << ")" << endl;
+        cout << "test str [" << i << "] = (";
+        print_str(test_strs[i]);
+        cout << ")" << endl;
+
+        rotated_str = rotate_str(test_strs[i], rotate_ind[i]);
+        cout << "rotated string at index " << rotate_ind[i] << "--> (";
+        print_str(rotated_str);
+        cout << ")" << endl;
     }
 
     cout << delim;
