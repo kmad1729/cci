@@ -16,8 +16,8 @@ class LL_Node {
 template<class T>
 class LinkedList {
     public:
-        void insert_node(const T& elem);
-        void delete_node(const T& elem);
+        void insert_node(const T&);
+        void delete_node(const T&);
 
         LinkedList() {
             head = NULL;
@@ -25,6 +25,7 @@ class LinkedList {
         }
 
         void print_list() const;
+        T get_nth_last(int);
     private:
         LL_Node<T>* head;
         LL_Node<T>* tail;
