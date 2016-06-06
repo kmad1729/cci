@@ -17,7 +17,6 @@ template<class T>
 class LinkedList {
     public:
         void insert_node(const T& elem);
-
         void delete_node(const T& elem);
 
         LinkedList() {
@@ -50,8 +49,56 @@ void LinkedList<T>::print_list() const {
     while(curr_node != NULL) {
         std::cout << (curr_node -> data) << " -> ";
         if(curr_node == tail)
-            std::cout << "/";
+            std::cout << "NULL";
         curr_node = (curr_node -> next);
     }
     std::cout << std::endl;
+}
+
+
+template <class T>
+void LinkedList<T>::delete_node(const T& t)
+{
+#if (_DEBUG > 0)
+    std::cout << "deleting data (" << t << ")" << std::endl;
+#endif
+    LL_Node<T>* prev = NULL;
+    LL_Node<T>* tmp_node = NULL;
+    if(head == NULL)
+        return;
+
+    if((head -> data) == t) {
+        tmp_node = head;
+        if(head == tail) {
+            head = NULL;
+            tail = NULL;
+        } else {
+            head = (head -> next);
+        }
+    } else {
+        prev = head;
+        LL_Node<T>* curr_node = (prev -> next);
+        while(curr_node != NULL && (curr_node -> data) != t) {
+            prev = curr_node;
+            curr_node = (curr_node -> next);
+        }
+
+        //found node to delete
+
+        if(curr_node == NULL) {
+#if (_DEBUG > 0)
+            std::cout << "data (" << t << ") not in linked list!!" << std::endl;
+#endif
+            return;
+        }
+
+        if(tail == curr_node)
+            tail = prev;
+        tmp_node = curr_node;
+        (prev -> next) = (curr_node -> next);
+    }
+    delete tmp_node;
+#if (_DEBUG > 0)
+    print_list();
+#endif
 }

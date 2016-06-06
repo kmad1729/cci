@@ -1,6 +1,9 @@
+#define _DEBUG 1
+
 #include "linked_list.h"
 #include <iostream>
 #include <string>
+
 
 using namespace std;
 
@@ -15,5 +18,15 @@ int main()
     ll.insert_node('e');
     cout << "linked list --> " << endl;
     ll.print_list();
-    cout << delim;
+
+    char del = 'e';
+    ll.delete_node(del);
+
+
+    del = 'f';
+    ll.delete_node(del);
+
+    del = 'a';
+    ll.delete_node(del);
+
 }
