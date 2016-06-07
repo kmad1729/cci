@@ -33,7 +33,8 @@ void LinkedList<T>::delete_with_node_ref(LL_Node<T>* node_ref)
 
     if(prev != NULL) {
         (prev -> next) = NULL;
-    }
+        tail = prev;
+    } 
     delete curr_node;
 }
 
@@ -51,12 +52,19 @@ void LinkedList<T>::delete_node_at_index(int ind)
 
     if(curr_node == NULL)
         throw domain_error(ss.str());
-    delete_with_node_ref(curr_node);
+
+    if(curr_node == tail) {
+        LL_Node<T>* new_tail = NULL;
+        for(new_tail = head; (new_tail -> next) != tail; 
+                new_tail = (new_tail -> next));
+        tail = new_tail;
+        (tail -> next) = NULL;
+        delete curr_node;
+    }
+    else
+        delete_with_node_ref(curr_node);
     //update the tail pointer;
-    for(curr_node = head; (curr_node -> next) != NULL; 
-            curr_node = (curr_node -> next));
-    tail = curr_node;
-    (tail -> next) = NULL;
+
 }
 
 int main()
@@ -71,10 +79,47 @@ int main()
     string delim = string(20, '#') + '\n';
     cout << "linked list --> " << endl;
     ll.print_list();
-    int n = 0;
     cout << delim;
+
+    int n = 0;
     cout << "deleting node at index " << n << endl;
     ll.delete_node_at_index(n);
+    cout << "linked list --> " << endl;
+    ll.print_list();
+    cout << delim;
+
+    n = 2;
+    cout << "deleting node at index " << n << endl;
+    ll.delete_node_at_index(n);
+    cout << "linked list --> " << endl;
+    ll.print_list();
+    cout << delim;
+
+    n = 2;
+    cout << "deleting node at index " << n << endl;
+    ll.delete_node_at_index(n);
+    cout << "linked list --> " << endl;
+    ll.print_list();
+    cout << delim;
+
+    n = 2;
+    cout << "trying to delete node at index " << n << endl;
+    try {
+        ll.delete_node_at_index(n);
+    } catch(domain_error e) {
+        cerr << "caught domain error --> (" << e.what() << ")" << endl;
+    }
+    cout << "linked list --> " << endl;
+    ll.print_list();
+    cout << delim;
+
+    n = 3;
+    cout << "trying to delete node at index " << n << endl;
+    try {
+        ll.delete_node_at_index(n);
+    } catch(out_of_range e) {
+        cerr << "caught domain error --> (" << e.what() << ")" << endl;
+    }
     cout << "linked list --> " << endl;
     ll.print_list();
     cout << delim;
