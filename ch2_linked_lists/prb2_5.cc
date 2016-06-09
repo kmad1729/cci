@@ -1,6 +1,7 @@
 //implement an algo that returns the beginning of loop in
 //a circular linked list
 //get_loop_beg({a,b,c,d,e,c}) -> &c (addr of node c)
+//get_loop_beg({a,b,c,d,e,f,g,h,d,e}) -> &c (addr of node c)
 
 #include <iostream>
 #include "linked_list.h"
