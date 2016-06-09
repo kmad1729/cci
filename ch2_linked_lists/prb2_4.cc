@@ -79,6 +79,25 @@ int main()
     cout << "l4 --> " << endl;
     l4.print_list();
 
+    LinkedList<short> l5;
+    l5.insert_node(3);
+    l5.insert_node(1);
+    l5.insert_node(5);
+    cout << "l5 --> " << endl;
+    l5.print_list();
+
+    LinkedList<short> l6;
+    l6.insert_node(5);
+    l6.insert_node(9);
+    l6.insert_node(2);
+    cout << "l6 --> " << endl;
+    l6.print_list();
+
+    LinkedList<short> l7;
+    cout << "l7 --> " << endl;
+    l7.print_list();
+
+
     cout << delim;
     cout << "l1 + l1 --> " << endl;
     sum_linked_list(l1, l1).print_list();
@@ -102,6 +121,14 @@ int main()
     cout << delim;
     cout << "l4 + l1 --> " << endl;
     sum_linked_list(l4, l1).print_list();
+
+    cout << delim;
+    cout << "l5 + l6 --> " << endl;
+    sum_linked_list(l5, l6).print_list();
+
+    cout << delim;
+    cout << "l7 + l7 --> " << endl;
+    sum_linked_list(l7, l7).print_list();
 
 
 }
