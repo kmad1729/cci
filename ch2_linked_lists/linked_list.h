@@ -28,7 +28,6 @@ class LinkedList {
         T get_nth_last(int);
         void delete_node_at_index(int ind);
 
-    private:
         LL_Node<T>* head;
         LL_Node<T>* tail;
         void delete_with_node_ref(LL_Node<T>*);
