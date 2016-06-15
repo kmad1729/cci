@@ -40,4 +40,13 @@ struct LinkedList {
         }
         cout << "NULL" << endl;
     }
+
+    int count(const T& t) {
+        //return the count of t in the list
+        int result = 0;
+        for(LLNode<T>* i = head; i != NULL; i = (i -> next))
+            if ((i -> data) == t)
+                result++;
+        return result;
+    }
 };

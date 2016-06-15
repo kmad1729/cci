@@ -15,4 +15,10 @@ int main()
     ll.print_list();
     cout << delim;
 
+    int n = 2;
+    cout << "count of " << n << " = " << ll.count(n) << endl;
+    n = 5;
+    cout << "count of " << n << " = " << ll.count(n) << endl;
+    cout << delim;
+
 }
