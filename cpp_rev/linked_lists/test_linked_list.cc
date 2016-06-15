@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <stdexcept>
 
 int main()
 {
@@ -21,4 +22,17 @@ int main()
     cout << "count of " << n << " = " << ll.count(n) << endl;
     cout << delim;
 
+    int i = 0;
+
+    cout << i << "th elem = " << ll.get_nth(i) << endl;
+    i = 2;
+    cout << i << "nd elem = " << ll.get_nth(i) << endl;
+    i = 3;
+    try {
+        cout << i << "rd elem = " << ll.get_nth(i) << endl;
+    } catch (out_of_range e) {
+        cout << "caught exception " << e.what() << " while trying to find "
+            << i << "rd elem" << endl;
+    }
+    cout << delim;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -48,5 +49,23 @@ struct LinkedList {
             if ((i -> data) == t)
                 result++;
         return result;
+    }
+
+    T get_nth(int n) {
+        // return nth element of the list '0' based
+        // out_of_range exception otherwise
+        if(n < 0)
+            throw out_of_range("index out of range!");
+        LLNode<T>* curr = head;
+        for(int index = 0; index < n; index++) {
+            if(curr == NULL)
+                throw out_of_range("index out of range!");
+            curr = (curr -> next);
+
+        }
+
+        if(curr == NULL)
+            throw out_of_range("index out of range!");
+        return (curr -> data);
     }
 };
