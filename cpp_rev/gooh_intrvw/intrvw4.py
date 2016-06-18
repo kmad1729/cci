@@ -8,13 +8,14 @@ import unittest
 #       [ [ [ ] ], [ ] ] -> [ [ ], [ ] ]
 #       [ [ [ ] ] ] -> [ ]
 
-def eliminate_1_len_brackets(lst):
+def eliminate_1_len_brackets(lst = []):
     if len(lst) != 1:
         for i, elem in enumerate(lst):
             lst[i] = eliminate_1_len_brackets(elem)
     else:
         lst = eliminate_1_len_brackets(lst[0])
     return lst
+
 
 class Test_Eliminate_1_len_bracket(unittest.TestCase):
     def test_1(self):
