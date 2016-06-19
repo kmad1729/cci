@@ -68,4 +68,12 @@ struct LinkedList {
             throw out_of_range("index out of range!");
         return (curr -> data);
     }
+
+    //get length of the linked list
+    int length() {
+        int len = 0;
+        for(LLNode<T>* i = head; i != NULL; i = (i -> next))
+            len++;
+        return len;
+    }
 };

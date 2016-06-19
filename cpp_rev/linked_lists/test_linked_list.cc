@@ -35,4 +35,7 @@ int main()
             << i << "rd elem" << endl;
     }
     cout << delim;
+
+    cout << "length of the linked list = " << ll.length() << endl;
+    cout << delim;
 }
