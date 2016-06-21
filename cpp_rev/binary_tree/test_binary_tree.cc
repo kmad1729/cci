@@ -153,5 +153,7 @@ int main()
     cout << "Number of bst structure for " << num_keys << " = " << count_trees(num_keys) 
         << endl;
     cout << "expected                        14" << endl;
+
+    cout << delim;
 }
 
