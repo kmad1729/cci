@@ -38,4 +38,6 @@ int main()
 
     cout << "length of the linked list = " << ll.length() << endl;
     cout << delim;
+
+    cout << delim;
 }
