@@ -39,5 +39,14 @@ int main()
     cout << "length of the linked list = " << ll.length() << endl;
     cout << delim;
 
+    LinkedList<char> ll_char;
+    ll_char.insert_data('a');
+    ll_char.insert_data('e');
+    ll_char.insert_data('i');
+    ll_char.insert_data('o');
+    ll_char.insert_data('u');
+    cout << "ll_char --> " << endl;
+    ll_char.print_list();
+
     cout << delim;
 }
